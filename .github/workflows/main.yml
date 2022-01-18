@@ -1,0 +1,38 @@
+name: Refresh Feed
+on:
+   push:
+   workflow_dispatch:
+      inputs:
+         name:
+            description: "Person to greet"
+            required: true
+            default: "Mona the Octocat"
+         home:
+            description: "location"
+            required: false
+            default: "The Octoverse"
+   schedule:
+      - cron: 1 23 * * *
+jobs:
+   refresh-feed:
+      runs-on: ubuntu-latest
+      steps:
+         - name: Checkout 🛎️
+           uses: actions/checkout@v2
+           with:
+              persist-credentials: false
+
+         - name: Fetch API Data 📦
+           uses: JamesIves/fetch-api-data-action@v2.2.0
+           with:
+              ENDPOINT:
+                 http://dataservice.accuweather.com/forecasts/v1/daily/5day/27133?apikey=${{
+                 secrets.API_KEY }}&details=true&metric=true
+              retry: true
+         - name: Build and Deploy 🚀
+           uses: JamesIves/github-pages-deploy-action@releases/v3
+           with:
+              ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+              BRANCH: main # Pushes the updates to the master branch.
+              FOLDER: fetch-api-data-action # The location of the data.json file saved by the Fetch API Data action.
+              TARGET_FOLDER: data # Saves the data into the 'data' directory on the master branch.

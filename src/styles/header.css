@@ -1,0 +1,12 @@
+.header {
+   widget: 100%;
+   padding: 16px 32px;
+   background: var(--grey-900);
+   color: var(--indigo-50);
+}
+.footer {
+   background: var(--indigo-100);
+   padding: 16px;
+   font-size: 12px;
+   text-align: center;
+}

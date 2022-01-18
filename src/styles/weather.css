@@ -1,0 +1,19 @@
+.weather {
+   width: 100%;
+   padding: 32px;
+   border-bottom: 1px solid var(--grey-400);
+}
+.rainy {
+   width: 100%;
+   padding: 32px;
+   border-bottom: 1px solid var(--grey-400);
+   background: var(--red-500);
+}
+.weather--stats {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+.right-items {
+   text-align: right;
+}
