@@ -49,9 +49,3 @@ function toDateMonth(date) {
    const newdate = d.getDate();
    return `${newdate} / ${month}`;
 }
-function toHourMinute(date) {
-   const d = new Date(date);
-   const hours = d.getHours();
-   const minutes = d.getMinutes();
-   return `${hours}:${minutes}`;
-}
