@@ -47,7 +47,7 @@ function DummyCard() {
          }
          highOrLow = Math.max(...arr);
       } else if (whichOn === "lowest") {
-         for (var i = 0; i < weather.length; i++) {
+         for (i = 0; i < weather.length; i++) {
             arr.push(weather[i].Temperature.Minimum.Value);
          }
          highOrLow = Math.min(...arr);
@@ -58,7 +58,7 @@ function DummyCard() {
          date: "21",
          month: "January",
       };
-      for (var i = 0; i < weather.length; i++) {
+      for (i = 0; i < weather.length; i++) {
          if (i === index) {
             if (whichOn === "highest") {
                obj.temp = weather[i].Temperature.Maximum.Value;
