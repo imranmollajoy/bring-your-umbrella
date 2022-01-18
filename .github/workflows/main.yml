@@ -1,6 +1,5 @@
 name: Refresh Feed
 on:
-   push:
    workflow_dispatch:
       inputs:
          name:
