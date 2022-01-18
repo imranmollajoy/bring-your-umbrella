@@ -6,7 +6,7 @@ function Weathers(props) {
    useEffect(() => {
       async function getData() {
          const res = await fetch(
-            "https://raw.githubusercontent.com/imranmollajoy/bring-your-umbrella/main/data/data.json"
+            "https://raw.githubusercontent.com/imranmollajoy/bring-your-umbrella/master/data/data.json"
          );
          const data = await res.json();
          setWeather(data.DailyForecasts);
