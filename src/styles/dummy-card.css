@@ -13,7 +13,7 @@
    border-radius: 16px;
 }
 .stats-card {
-   width: 100%;
+   min-width: 50%;
 }
 .highest-card {
    display: flex;
@@ -60,7 +60,7 @@
    height: 100%;
 }
 /* // media quer for mobile */
-@media (max-width: 768px) {
+@media (max-width: 425px) {
    .widget {
       gap: 0px;
       flex-direction: column;
@@ -88,5 +88,13 @@
    .highest-temp-card,
    .rain-card {
       width: 100%;
+   }
+}
+
+// media query for tablet
+@media (min-width: 425px) and (max-width: 1024px) {
+   .stats-card {
+      min-width: 80%;
+      margin-bottom: 16px;
    }
 }
