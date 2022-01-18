@@ -91,7 +91,6 @@
    }
 }
 
-// media query for tablet
 @media (min-width: 425px) and (max-width: 1024px) {
    .stats-card {
       min-width: 80%;
