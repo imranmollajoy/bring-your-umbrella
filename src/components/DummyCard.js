@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { monthNames } from "./MonthNames";
 import "../styles/dummy-card.css";
 function DummyCard() {
    const [weather, setWeather] = useState([]);
