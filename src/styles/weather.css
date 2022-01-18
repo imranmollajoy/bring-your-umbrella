@@ -7,7 +7,8 @@
    width: 100%;
    padding: 32px;
    border-bottom: 1px solid var(--grey-400);
-   background: var(--red-500);
+   color: var(--red-50);
+   background: var(--red-900);
 }
 .weather--stats {
    display: flex;
@@ -16,4 +17,9 @@
 }
 .right-items {
    text-align: right;
+}
+.chances-of-rain {
+   display: flex;
+   align-items: flex-end;
+   gap: 4px;
 }

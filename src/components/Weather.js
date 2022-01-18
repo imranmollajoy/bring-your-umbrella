@@ -12,10 +12,12 @@ function Weather(props) {
          <div className="weather--stats">
             <div>
                <h1 className="title">{currentDate}</h1>
-               <h2 className="chances-of-rain normal">
-                  <span className="bold">{calculateHighestRain()}%</span> chance
-                  of rain
-               </h2>
+               <span className="chances-of-rain">
+                  <h2 className="normal bold roboto">
+                     {calculateHighestRain()}%{" "}
+                  </h2>
+                  <h3> chance of rain</h3>
+               </span>
             </div>
             <div className="right-items">
                <div className="weather--top-stats">
@@ -47,5 +49,5 @@ function toDateMonth(date) {
    const d = new Date(date);
    const month = d.getMonth() + 1;
    const newdate = d.getDate();
-   return `${newdate} / ${month}`;
+   return `${newdate}/${month}`;
 }

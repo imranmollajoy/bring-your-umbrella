@@ -1,3 +1,4 @@
+import Chart from "chart.js/auto";
 import { useEffect, useState } from "react";
 import "../styles/dummy-card.css";
 function DummyCard() {
@@ -77,11 +78,11 @@ function DummyCard() {
          <div className="card stats-card">
             <div className="card lowest-card">
                <h3>Lowest Temperature</h3>
-               <div className="lowest-temp-stats">
-                  <span className="value">
+               <div className="lowest-temp-stats roboto">
+                  <h2 className="value bold roboto">
                      {getHighestTemperature("lowest").temp} °C
-                  </span>
-                  <h3>
+                  </h2>
+                  <h3 className="bold">
                      {" "}
                      {getHighestTemperature("lowest").date}/
                      {getHighestTemperature("lowest").month}
@@ -90,7 +91,9 @@ function DummyCard() {
             </div>
             <div className="card highest-card">
                <div className="card highest-temp-card">
-                  <h1>{getHighestTemperature("highest").temp} °C</h1>
+                  <h1 className="roboto">
+                     {getHighestTemperature("highest").temp} °C
+                  </h1>
                   <h2>
                      {getHighestTemperature("highest").date}/
                      {getHighestTemperature("highest").month}
@@ -98,7 +101,7 @@ function DummyCard() {
                   <h3>Highest Temperature</h3>
                </div>
                <div className="card rain-card">
-                  <h1>
+                  <h1 className="roboto">
                      {getHighestRain().date}/{getHighestRain().month}
                   </h1>
                   <h1>{getHighestRain().probability}%</h1>
@@ -106,7 +109,6 @@ function DummyCard() {
                </div>
             </div>
          </div>
-         <div className="card graph-card">graph</div>
       </div>
    );
 }

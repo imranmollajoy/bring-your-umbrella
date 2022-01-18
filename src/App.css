@@ -314,6 +314,7 @@ h3,
 h1,
 h2 {
    text-transform: uppercase;
+   font-family: "Montserrat", sans-serif;
 }
 .normal {
    font-weight: 400;
