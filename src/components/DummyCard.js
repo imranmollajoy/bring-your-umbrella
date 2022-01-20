@@ -1,4 +1,3 @@
-import Chart from "chart.js/auto";
 import { useEffect, useState } from "react";
 import "../styles/dummy-card.css";
 function DummyCard() {

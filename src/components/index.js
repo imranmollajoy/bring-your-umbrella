@@ -5,4 +5,3 @@ export { default as DummyCard } from "./DummyCard";
 export { default as WeatherReportTitle } from "./WeatherReportTitle";
 export { default as Footer } from "./Footer";
 export { default as Weather } from "./Weather";
-export { default as MinMaxGraph } from "./MinMaxGraph";
