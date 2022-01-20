@@ -1,16 +1,44 @@
-.weather {
-   width: 100%;
-   padding: 32px;
-   border-bottom: 1px solid var(--grey-400);
+/* # The Rotating Marker # */
+details summary::-webkit-details-marker { display: none; }
+summary{
+   position: relative;
 }
-.rainy {
+summary::before {
+   font-family: "Hiragino Mincho ProN", "Open Sans", sans-serif;
+   content: "›";
+   position:absolute;
+   bottom: 0;
+   left: 50%;
+   transform: rotate(90deg);
+   transform-origin: center;
+   transition: 0.2s transform ease;
+   color: var(--grey-400);
+   font-size: 2rem;
+ }
+ details[open] > summary:before {
+   transform: rotate(0deg);
+   transition: 0.45s transform ease;
+ }
+details[open] summary, details[open] {
+   background: var(--grey-50);
+   padding-bottom: 0;
+ }
+ .red{
+    color: var(--red-600)
+ }
+
+.weather,.rainy {
    width: 100%;
-   padding: 32px;
    border-bottom: 1px solid var(--grey-400);
-   color: var(--red-50);
-   background: var(--red-900);
+   
+}
+.title{
+   font-size: 2rem;
+   font-weight: 700;
 }
 .weather--stats {
+   padding: 16px 32px;
+   cursor: pointer;
    display: flex;
    justify-content: space-between;
    align-items: center;
@@ -22,4 +50,40 @@
    display: flex;
    align-items: flex-end;
    gap: 4px;
+}
+.more-info{
+   padding:16px 32px ;
+}
+.stats-wrapper{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+.stats-wrapper p{
+   margin-top: 4px;
+}
+.stats-wrapper-left{
+   max-width: 60%;
+}
+.rain-data{
+   text-align: right;
+}
+.night-stats{
+   border-top: 1px solid rgba(0,0,0,0.2);
+   margin-top: 4px;
+   padding-top: 4px;
+}
+@media (min-width:1200px){
+   .weather , .rainy {
+      max-width: 50%;
+      margin: 0 auto;
+      border-radius: 8px;
+   }
+   
+}
+@media (max-width:485px){
+   .weather--stats, .more-info{
+      padding: 16px 8px;
+   }
+   
 }
