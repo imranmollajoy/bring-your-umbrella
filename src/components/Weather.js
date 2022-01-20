@@ -14,7 +14,13 @@ function Weather(props) {
     <details className="weather">
       <summary className="weather--stats">
         <div>
-          <h1 className="title bold">{currentDate}</h1>
+          <h1
+            className={`title bold ${
+              calculateHighestRain() > 50.0 ? "red" : ""
+            }`}
+          >
+            {currentDate}
+          </h1>
           <span className="chances-of-rain">
             <h2
               className={`normal bold ${
@@ -62,7 +68,7 @@ function Weather(props) {
         </div>
         <div className="night-stats">
           <h2>Night</h2>
-          <div class="stats-wrapper">
+          <div className="stats-wrapper">
             <div>
               <h3>{night.ShortPhrase}</h3>
               <p>Rain Probability {night.RainProbability}%</p>
