@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/bring-your-umbrella/static/css/main.e7bc6ac1.css",
-    "main.js": "/bring-your-umbrella/static/js/main.f58e3353.js",
+    "main.css": "/bring-your-umbrella/static/css/main.b4a28234.css",
+    "main.js": "/bring-your-umbrella/static/js/main.84fcbd85.js",
     "static/js/787.547d3936.chunk.js": "/bring-your-umbrella/static/js/787.547d3936.chunk.js",
     "index.html": "/bring-your-umbrella/index.html",
-    "main.e7bc6ac1.css.map": "/bring-your-umbrella/static/css/main.e7bc6ac1.css.map",
-    "main.f58e3353.js.map": "/bring-your-umbrella/static/js/main.f58e3353.js.map",
+    "main.b4a28234.css.map": "/bring-your-umbrella/static/css/main.b4a28234.css.map",
+    "main.84fcbd85.js.map": "/bring-your-umbrella/static/js/main.84fcbd85.js.map",
     "787.547d3936.chunk.js.map": "/bring-your-umbrella/static/js/787.547d3936.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e7bc6ac1.css",
-    "static/js/main.f58e3353.js"
+    "static/css/main.b4a28234.css",
+    "static/js/main.84fcbd85.js"
   ]
 }
