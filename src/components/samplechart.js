@@ -9,7 +9,6 @@ import {
   AreaChart,
   Area,
   Legend,
-  ReferenceLine,
 } from "recharts";
 import "../styles/sample-chart.css";
 
