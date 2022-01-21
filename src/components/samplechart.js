@@ -19,10 +19,16 @@ function SampleChart(props) {
       name: item.Date.slice(8, 10) + "/" + item.Date.slice(5, 7),
       Minimum: item.Temperature.Minimum.Value,
       Maximum: item.Temperature.Maximum.Value,
-      RainProbability: item.Day.RainProbability + item.Night.RainProbability,
+      RainProbability: Math.min(
+        Math.max(item.Day.RainProbability + item.Night.RainProbability, 0),
+        100
+      ),
+
       RainAmount: item.Day.Rain.Value + item.Night.Rain.Value,
     };
   });
+  // Clamp number between two values with the following line:
+  const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
   const MinMaxTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (

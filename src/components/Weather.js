@@ -8,8 +8,14 @@ function Weather(props) {
   const day = props.Day;
   const night = props.Night;
   function calculateHighestRain() {
-    return props.Day.RainProbability + props.Night.RainProbability;
+    return clamp(
+      props.Day.RainProbability + props.Night.RainProbability,
+      0,
+      100
+    );
   }
+  // Clamp number between two values with the following line:
+  const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
   return (
     <details className="weather">
       <summary className="weather--stats">
