@@ -50,13 +50,7 @@ function SampleChart(props) {
 
     return null;
   };
-  function getMinMaxTemp() {
-    const min = newWeather.map((item) => item.Minimum);
-    const max = newWeather.map((item) => item.Maximum);
-    const Max = Math.max(...max);
-    const Min = Math.min(...min);
-    return { Max, Min };
-  }
+
   return (
     <div className="chart-wrapper">
       <ResponsiveContainer
