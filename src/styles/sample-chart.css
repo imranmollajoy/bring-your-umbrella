@@ -1,7 +1,23 @@
-.chart-wrapper{
-    max-width: 100%;
+.chart-wrapper {
+  max-width: 100%;
+  margin: 32px 0;
 }
-.chart-container{
+.chart-container {
+  margin: 0 auto;
+  margin-left: -16px;
+}
+
+.custom-tooltp,
+.recharts-tooltip-wrapper {
+  background: var(--grey-50);
+  border-radius: 8px;
+  box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.1);
+  padding: 8px;
+}
+/* media query for pc and laptop */
+@media screen and (min-width: 1000px) {
+  .chart-wrapper {
+    max-width: 50%;
     margin: 0 auto;
-    
+  }
 }
