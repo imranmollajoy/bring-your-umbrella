@@ -28,7 +28,6 @@ function SampleChart(props) {
     };
   });
   // Clamp number between two values with the following line:
-  const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
   const MinMaxTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
