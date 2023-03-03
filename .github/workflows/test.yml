@@ -20,6 +20,10 @@ jobs:
         run: |
           if [ -f existing_data.json ]; then
             data=$(cat existing_data.json)
+            if ! jq '.' <<<"$data" >/dev/null 2>&1; then
+              echo "existing_data.json is not valid JSON data. Creating an empty array."
+              data="[]"
+            fi
           else
             data="[]"
             echo "$data" > existing_data.json
