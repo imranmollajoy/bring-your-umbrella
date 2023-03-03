@@ -25,8 +25,7 @@ jobs:
            uses: JamesIves/fetch-api-data-action@v2.2.0
            with:
               ENDPOINT:
-                 http://dataservice.accuweather.com/forecasts/v1/daily/5day/27133?apikey=${{
-                 secrets.API_KEY }}&details=true&metric=true
+                 http://dataservice.accuweather.com/forecasts/v1/daily/5day/27133?apikey=${{ secrets.API_KEY }}&details=true&metric=true
               retry: true
          - name: Build and Deploy 🚀
            uses: JamesIves/github-pages-deploy-action@releases/v3

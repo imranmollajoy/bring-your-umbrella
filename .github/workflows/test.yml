@@ -20,37 +20,17 @@ jobs:
         run: |
           if [ -f existing_data.json ]; then
             data=$(cat existing_data.json)
-            if ! jq empty <<< "$data" >/dev/null 2>&1; then
-              echo "Error: existing_data.json is not a valid JSON file"
-              exit 1
-            fi
           else
             data="[]"
             echo "$data" > existing_data.json
           fi
           echo "::set-output name=data::$data"
 
-
       - name: Merge new data with existing data
         id: merge_data
         run: |
           new_data=$(cat api_data.json)
-          merged_data=$(jq -s '.[0] + .[1] | unique' "${{ steps.read_file.outputs.data }}" "$new_data")
-          echo "${merged_data:0:1000}" > existing_data.json
+          existing_data=$(echo "${{ steps.read_file.outputs.data }}")
+          merged_data=$(echo "$new_data" | jq --argjson existing "$existing_data" '. | unique + $existing | .[:10]')
+          echo "$merged_data" > existing_data.json
           echo "::set-output name=data::$merged_data"
-
-      - name: Filter out duplicates
-        id: filter_duplicates
-        run: |
-          data=$(cat existing_data.json)
-          new_data=$(cat api_data.json)
-          filtered_data=$(echo "$new_data" | jq --argjson existing "$data" '. | map(select(. | IN($existing[]) | not))')
-          echo "${filtered_data:0:1000}" > existing_data.json
-          echo "::set-output name=data::$filtered_data"
-
-      - name: Limit data to 100 objects
-        run: |
-          data=$(cat existing_data.json)
-          limited_data=$(echo "$data" | jq '.[:100]')
-          echo "${limited_data:0:1000}" > existing_data.json
-          echo "::set-output name=data::$limited_data"
