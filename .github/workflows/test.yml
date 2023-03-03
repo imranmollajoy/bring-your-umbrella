@@ -34,3 +34,16 @@ jobs:
           merged_data=$(echo "$new_data" | jq --argjson existing "$existing_data" '. | unique + $existing | .[:10]')
           echo "$merged_data" > existing_data.json
           echo "::set-output name=data::$merged_data"
+      - name: Commit changes
+        run: |
+          git config --global user.name $user_name
+          git config --global user.email $user_email
+          git add existing_data.json
+          git remote set-url origin https://${github_token}@github.com/${repository}
+          git commit -m "Update existing_data.json with new API data"
+          git push origin master
+        env:
+            user_name: "github-actions[bot]"
+            user_email: "github-actions[bot]@users.noreply.github.com"
+            github_token: ${{ secrets.ACCESS_TOKEN }}
+            repository: ${{ github.repository }}
