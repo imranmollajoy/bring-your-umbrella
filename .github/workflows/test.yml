@@ -1,0 +1,46 @@
+name: Update JSON file with API data
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  update_json:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Fetch API data
+        run: |
+          curl -s http://dataservice.accuweather.com/forecasts/v1/daily/5day/27133?apikey=${{ secrets.API_KEY }}&details=true&metric=true > api_data.json
+
+      - name: Read existing data from file
+        id: read_file
+        run: |
+          data=$(cat existing_data.json)
+          echo "::set-output name=data::$data"
+
+      - name: Merge new data with existing data
+        id: merge_data
+        run: |
+          new_data=$(cat api_data.json)
+          merged_data=$(jq -s '.[0] + .[1] | unique' "${{ steps.read_file.outputs.data }}" "$new_data")
+          echo "${merged_data:0:1000}" > existing_data.json
+          echo "::set-output name=data::$merged_data"
+
+      - name: Filter out duplicates
+        id: filter_duplicates
+        run: |
+          data=$(cat existing_data.json)
+          new_data=$(cat api_data.json)
+          filtered_data=$(echo "$new_data" | jq --argjson existing "$data" '. | map(select(. | IN($existing[]) | not))')
+          echo "${filtered_data:0:1000}" > existing_data.json
+          echo "::set-output name=data::$filtered_data"
+
+      - name: Limit data to 10 objects
+        run: |
+          data=$(cat existing_data.json)
+          limited_data=$(echo "$data" | jq '.[:100]')
+          echo "${limited_data:0:1000}" > existing_data.json
+          echo "::set-output name=data::$limited_data"
