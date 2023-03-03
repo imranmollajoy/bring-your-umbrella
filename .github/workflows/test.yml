@@ -2,7 +2,7 @@ name: Update JSON file with API data
 
 on:
   push:
-    branches: [master]
+    branches: [main]
 
 jobs:
   update_json:
@@ -18,7 +18,12 @@ jobs:
       - name: Read existing data from file
         id: read_file
         run: |
-          data=$(cat existing_data.json)
+          if [ -f existing_data.json ]; then
+            data=$(cat existing_data.json)
+          else
+            data="[]"
+            echo "$data" > existing_data.json
+          fi
           echo "::set-output name=data::$data"
 
       - name: Merge new data with existing data
@@ -38,7 +43,7 @@ jobs:
           echo "${filtered_data:0:1000}" > existing_data.json
           echo "::set-output name=data::$filtered_data"
 
-      - name: Limit data to 10 objects
+      - name: Limit data to 100 objects
         run: |
           data=$(cat existing_data.json)
           limited_data=$(echo "$data" | jq '.[:100]')
