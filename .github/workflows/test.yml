@@ -20,15 +20,16 @@ jobs:
         run: |
           if [ -f existing_data.json ]; then
             data=$(cat existing_data.json)
-            if ! jq '.' <<<"$data" >/dev/null 2>&1; then
-              echo "existing_data.json is not valid JSON data. Creating an empty array."
-              data="[]"
+            if ! jq empty <<< "$data" >/dev/null 2>&1; then
+              echo "Error: existing_data.json is not a valid JSON file"
+              exit 1
             fi
           else
             data="[]"
             echo "$data" > existing_data.json
           fi
           echo "::set-output name=data::$data"
+
 
       - name: Merge new data with existing data
         id: merge_data
