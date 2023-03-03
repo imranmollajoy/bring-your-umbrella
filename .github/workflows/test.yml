@@ -2,7 +2,7 @@ name: Update JSON file with API data
 
 on:
   push:
-    branches: [main]
+    branches: [master]
 
 jobs:
   update_json:
